@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+isELIgnored="false"%>
 <%@ page import="java.util.*" %>
 <%@ page import="model.PersonDetails , java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -25,16 +27,16 @@
               </tr>
             </thead>
             <tbody>
- <% List<PersonDetails> list = (ArrayList<PersonDetails>) request.getAttribute("list");%>
- <% for (PersonDetails personDetails:list){%>
-                                <tr>
-                                    <td><%=personDetails.getName()%></td>
-                                    <td><%=personDetails.getAmount()%></td>
-                                    <td><%=personDetails.getCategory()%></td>
-                                    <td><%=personDetails.getDate()%></td>
-                                    <td><%=personDetails.getDescription()%></td>
-                                </tr>
-                      <%}%>
+   <c:forEach var = "Person" items="${list}">
+   <tr>
+        <td>${Person.getName()}</td>
+        <td>${Person.getAmount()}</td>
+        <td>${Person.getCategory()}</td>
+        <td>${Person.getDate()}</td>
+        <td>${Person.getDate()}</td>
+   </tr>
+  </c:forEach>
+
             </tbody>
           </table>
           <a class="btn btn-primary" href="index.jsp" role="button">Insert Expense</a>
